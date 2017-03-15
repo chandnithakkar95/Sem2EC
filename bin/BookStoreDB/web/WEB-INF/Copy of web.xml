@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+<context-param>
+         <param-name>user</param-name>
+         <param-value>admin</param-value>
+</context-param>    
+<context-param>
+         <param-name>password</param-name>
+         <param-value>1234</param-value>
+</context-param>
+  <filter>
+    <filter-name>Authenticator</filter-name>
+    <filter-class>pmj.bookstore.filters.Authenticator</filter-class>
+  </filter>
+    <servlet>
+        <servlet-name>Controller</servlet-name>
+        <servlet-class>pmj.bookstore.controller.Controller</servlet-class>
+    </servlet>
+  <filter-mapping>
+    <filter-name>Authenticator</filter-name>
+    <servlet-name>Controller</servlet-name>
+  </filter-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/Controller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
